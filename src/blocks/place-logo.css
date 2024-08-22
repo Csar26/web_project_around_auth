@@ -1,0 +1,24 @@
+.place-logo {
+  display: block;
+  margin: auto;
+  width: 880px;
+  border: 1px;
+  padding-top: 45px;
+}
+
+.avatar:hover{
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+@media screen and  (max-width: 880px) {
+  .place-logo {
+    width: 320px;
+    margin: auto;
+    row-gap: 30px;
+  }
+  .line {
+    width: 320px;
+  }
+}
+

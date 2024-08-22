@@ -1,0 +1,89 @@
+.elements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 880px;
+  margin: 50px auto 60px;
+  row-gap: 20px;
+  column-gap: 17px;
+}
+.element {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 282px;
+  background-color: black;
+  border-radius: 10px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.element__image {
+  background-color: black;
+  width: 282px;
+  height: 282px;
+}
+.element__image:hover{
+  cursor: pointer;
+}
+
+.element__place {
+  display: flex;
+  background-color: white;
+  width: 282px;
+}
+.element__title {
+  width: 230px;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  text-align: left;
+  color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-left: 21px;
+}
+
+.element__like {
+  width: 20.76px;
+  height: 18.13px;
+  align-self: center;
+  justify-content: center;
+  border: none;
+  background-color: white;
+  background-image: url(../images/like\ vector.svg);
+}
+
+.element__like:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.element__like-click {
+  background-image: url(../images/like_black_vector.svg);
+}
+
+.element__counter {
+  position: relative;
+  width: 9px;
+  height: 0px;
+  top: 40px;
+  right: 14px;
+  font-family: Inter;
+   font-size: 13px;
+   font-weight: 400;
+
+
+}
+
+@media screen and (max-width: 880px) {
+  .elements {
+    display: flex;
+    flex-direction: column;
+    width: 282px;
+    border-radius: 10px, 10px, 0, 0;
+    row-gap: 20px;
+    column-gap: 17px;
+  }
+}

@@ -1,0 +1,121 @@
+.profile {
+  display: flex;
+  width: 880px;
+  top: 159px;
+  align-items: center;
+  margin: 40px auto 50px;
+  column-gap: 30px;
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 550px;
+  height: 100px;
+  margin-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile__name-area {
+  display: flex;
+  align-items: center;
+}
+
+.profile__name {
+  color: #ffffff;
+  font-family: Inter;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 48px;
+  text-align: left;
+  margin: 0;
+  width: 415px;
+  height: 39px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.profile__job {
+  letter-spacing: 0em;
+  width: 415px;
+  height: 22px;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile__button {
+  align-self: last baseline;
+  transition: ease 1s;
+  background-color: black;
+  border: none;
+  padding-left: 18px;
+}
+
+.profile__button:hover {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.profile__avatar-button-edit{
+  background: none;
+  border: none;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.avatar{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+
+.profile__avatar-button-edit:hover {
+  background-image: url(../images/Edit_Button.svg);
+  background-repeat: no-repeat;
+  background-size: 26px 26px;
+  background-position: center center;
+}
+
+
+@media screen and (max-width: 880px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    width: 282px;
+    align-items: center;
+    justify-content: center;
+    row-gap: 30px;
+  }
+
+  .profile__info {
+    align-items: center;
+    width: 320px;
+  }
+
+  .profile__name {
+    width: 196px;
+    height: 22px;
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 27px;
+    text-align: center;
+  }
+
+  .profile__job {
+    text-align: center;
+  }
+}
+
