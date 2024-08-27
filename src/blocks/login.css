@@ -1,0 +1,36 @@
+.login{
+width: 1280px;
+height: 720px;
+top: 2284px;
+gap: 0px;
+opacity: 0px;
+background: #000000;
+
+
+}
+
+.login__start{
+width: 111px;
+height: 44px;
+top: 51px;
+gap: 0px;
+opacity: 0px;
+
+}
+
+.login_form {
+width: 358px;
+height: 29px;
+top: 179px;
+left: 461px;
+gap: 0px;
+opacity: 0px;
+font-family: Inter;
+font-size: 24px;
+font-weight: 900;
+text-align: center;
+background: #FFFFFF;
+
+
+
+}

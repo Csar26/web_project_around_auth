@@ -10,6 +10,11 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
 import AddPlacePopup  from "./AddPlacePopup";
 import CurrentUserContext from "../contexts/CurrentUserContext";
+import Login from "./Login";
+import Register from "./Register";
+import {Route, Switch, Link} from 'react-router-dom';
+import ProtectedRoute from "./ProtectedRoute";
+
 
 function App() {
   const [openProfileOpen, setOpenProfileOpen] = React.useState(false);
@@ -93,17 +98,38 @@ function App() {
       closeAllPopups();
     }
   }
-  /*
-const handleRemoveLike(idCard) {
-  return api.deleteLike(idCard);
-}
-function addLikeCard(idCard) {
-  return api.likeCard(idCard);
-}*/
+ 
+
+
+   const handleLogin = (event) => {
+    const email = event.target.elemets.email.value;
+    const password = event.target.elemets.password.value;
+    fetch('https://tripleten.desarrollointerno-com/signin', {
+      method: 'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify({email,password})
+    }).then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+   }
+
+
 
   return (
+
     <CurrentUserContext.Provider value={currentUser}>
-    <div className="page">
+    <div className="page" >
+      <Switch>
+        <Route path="/">
+        <Register />
+        </Route>
+        <Route path="/Login" handleLogin={handleLogin}>
+        
+        </Route>
+        <ProtectedRoute>
       <Header
         handleEditProfileClick={() => {
           setOpenProfileOpen(true);
@@ -152,8 +178,16 @@ function addLikeCard(idCard) {
       >
         <></>
       </ImagePopup>
+      </ProtectedRoute>
+      <Route>
+
+        
+      </Route>
+
+      </Switch>
     </div>
     </CurrentUserContext.Provider>
+    
   );
 }
 export default App;
