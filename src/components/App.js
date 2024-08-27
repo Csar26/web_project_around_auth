@@ -179,11 +179,7 @@ function App() {
         <></>
       </ImagePopup>
       </ProtectedRoute>
-      <Route>
-
-        
-      </Route>
-
+     
       </Switch>
     </div>
     </CurrentUserContext.Provider>

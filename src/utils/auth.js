@@ -1,13 +1,13 @@
 export const BASE_URL = "https://api.nomoreparties.co";
 
-export const register = (username, password, email) => {
+export const register = (password, email) => {
   return fetch(`${BASE_URL}/auth/local/register`, {
     method: "POST",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username, password, email }),
+    body: JSON.stringify({ password, email }),
   })
     .then((response) => {
       try {
@@ -20,3 +20,7 @@ export const register = (username, password, email) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const login = (emai, password) => {
+
+}

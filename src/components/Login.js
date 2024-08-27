@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import *as auth from "../utils/auth"
+import * as auth from "../utils/auth"
 import { useState } from "react";
 
 export default function Login ({setIsLogged}) {
@@ -14,7 +14,7 @@ export default function Login ({setIsLogged}) {
       return;
     }
     auth
-    .Login(email, password)
+    .login(email, password)
     .then((res) => {
       if(res.token){
         setIsLogged(true);

@@ -52,7 +52,7 @@
   justify-content: center;
   border: none;
   background-color: white;
-  background-image: url(../images/like\ vector.svg);
+  background-image: url(../images/like_vector.svg);
 }
 
 .element__like:hover {
