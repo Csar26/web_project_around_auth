@@ -4,6 +4,7 @@ import EditButoon from '../images/Edit_Button.svg'
 import AddButton from '../images/vector_add.svg'
 import  CurrentUserContext  from '../contexts/CurrentUserContext'
 import React from 'react'
+import { Link } from "react-router-dom";
 
 export default function Header({
   handleEditProfileClick,
@@ -18,7 +19,17 @@ export default function Header({
     <header className="header">
       <div className="place-logo">
         <img src={Logo} alt="logo Around" className="logo" />
+        <div className='header__register'>
+    <Link to="login" className='header__login'>
+    login
+    </Link>
+    <Link to="register" className="header__register">
+      Register
+    </Link>
+
       </div>
+      </div>
+      
       <section className="profile">
         <button className="profile__avatar-button-edit" onClick={handleEditAvatarClick}>
           <img

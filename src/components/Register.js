@@ -1,66 +1,87 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import * as auth from "../utils/auth"
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import * as auth from "../utils/auth.js";
+import InfoToolTips from "./InfoTooltip.js";
 
-class Register extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+export default function Register() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
-  }
+  const [open, setOpen] = useState(false);
+  const [isFullFill, setIsFullFill] = useState(true);
 
-  handleSubmit = (e) => {
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (this.state.password ) {
-      auth.register(this.state.username, this.state.password, this.state.email).then((res) => {
-        if(res) {
-          this.setState({message:""}, () => {
-this.props.history.push("/login");
-          })
-        }
-      });
+    if ((email, password)) {
+      auth
+        .register(email, password)
+        .then((res) => {
+          console.log(res, res._id);
+          if (!res._id) {
+            setIsFullFill(false);
+          }
+          setOpen(true);
+          setTimeout(() => {
+            history.push("/login");
+          }, 4000);
+        })
+        .catch((error) => {
+          console.log(error);
+          setOpen(true);
+          setIsFullFill(false);
+        });
     }
-   
-  }
+  };
 
-  render() {
-    return (
+  return (
+    <>
       <div className="register">
-        <p className="register__welcome">
-          Por favor, regístrate.
-        </p>
-        <form onSubmit={this.handleSubmit} className="register__form">
-          <label htmlFor="email">
-            Correo Electrónico:
-          </label>
-          <input id="email" name="email" type="email" value={this.state.email} onChange={this.handleChange} />
-          <label htmlFor="password">
-            Contraseña:
-          </label>
-          <input id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange} />
-          <div className="register__button-container">
-            <button type="submit" onSubmit={this.handleSubmit} className="register__link">Iniciar sesión</button>
+        <p className="register__welcome">Regístrate</p>
+        <form className="register__form" onSubmit={handleSubmit}>
+          <label htmlFor="email">Email address</label>
+          <input
+            required
+            name="email"
+            type="email"
+            className="register__data"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+          <span className="register__divider"></span>
+          <label htmlFor="password">Password</label>
+          <input
+            required
+            name="password"
+            type="password"
+            minLength="8"
+            maxLength="15"
+            className="register__data"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
+          <span className="register__divider"></span>
+          <div className="register__button">
+            <button type="submit" className="register__path">
+              Regístrate
+            </button>
           </div>
         </form>
         <div className="register__signin">
-          <p>¿Ya tienes una cuenta?</p>
-          <Link to="login" className="register__login-link">Inicia sesión aquí</Link>
+          <p>Are you a member?</p>
+          <Link to="login" className="register__login-path">
+            Login here
+          </Link>
         </div>
       </div>
-    );
-  }
+      <InfoToolTips
+        open={open}
+        isFullFill={isFullFill}
+        handleClose={() => {
+          setOpen(false);
+        }}
+      />
+    </>
+  );
 }
-
-export default Register;

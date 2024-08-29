@@ -1,8 +1,80 @@
 .register{
-  width: 1280px;
-  height: 720px;
-  background-color: #000000;
+  font-family: Inter;
+  width: 358px;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 30%;
+  
+  
 }
+
+.register__welcome{
+  font-size: 29px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 60px;
+
+
+}
+
+.register__form{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+
+}
+
+
+.register__data{
+  text-align: left;
+  color: white;
+  background-color: black;
+  border: none;
+  width: 358px;
+  display: flex;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+ 
+}
+
+.register__divider{
+  display: block;
+  border: 1px solid white;
+  margin-bottom: 30px;
+
+}
+
+.register__path{
+  height: 50px;
+  border: none;
+  border-radius: 2%;
+  cursor: pointer;
+  margin-top: 216px;
+  font-size: 22px;
+  width: 358px;
+  
+}
+
+.register__signin{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  color: white;
+  font-size: 17px;
+  
+}
+
+.register__login-path{
+  color: white;
+  margin-left: 10px;
+  text-decoration-line: none;
+
+}
+

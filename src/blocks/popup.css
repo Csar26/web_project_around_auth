@@ -173,6 +173,38 @@
   font-weight: 900;
 }
 
+
+.popup__register_utter{
+  padding-top: 200px;
+  padding-bottom: 70px;
+  color: black;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: transparent;
+  background-position: top;
+  background-image: url(../images/success.svg);
+}
+
+
+.popup__register_error{
+  padding-top: 200px;
+  padding-bottom: 70px;
+  color: black;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: transparent;
+  background-position: top;
+  background-image: url(../images/error_success.svg);
+}
+
 @media screen and (max-width: 880px) {
   .popup__content {
     width: 288px;
