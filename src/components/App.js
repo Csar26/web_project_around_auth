@@ -25,12 +25,18 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState(false);
   const [cards, setCards] = React.useState([]);
   const [selectCard, setSelectCard] = React.useState({});
+
+const [email, setEmail] = React.useState("");
+const [isLogged, setIsLogged] = React.useState(false);
+
   const closeAllPopups = () => {
     setOpenProfileOpen(false);
     setOpenAddCardOpen(false);
     setOpenAvatarOpen(false);
     setOpenImageOpen(false);
     setOpenConfirmationOpen(false);
+
+
     
   };
   React.useEffect(() => {
@@ -123,11 +129,12 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
     <div className="page" >
       <Switch>
-        <Route path="/">
+        <Route path="/register">
         <Register />
         </Route>
         <Route path="/Login" handleLogin={handleLogin}>
-        
+        <Login setIsLogged={setIsLogged} email={email} setEmail={setEmail}>
+        </Login>
         </Route>
         <ProtectedRoute>
       <Header

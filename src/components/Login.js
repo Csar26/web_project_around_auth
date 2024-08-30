@@ -3,8 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import * as auth from "../utils/auth"
 import { useState } from "react";
 
-export default function Login ({setIsLogged}) {
-  const [email, setEmail] = useState('');
+export default function Login ({setIsLogged, email, setEmail}) {
   const [password, setPassword] = useState('');
   const history = useHistory();
 
@@ -17,6 +16,7 @@ export default function Login ({setIsLogged}) {
     .login(email, password)
     .then((res) => {
       if(res.token){
+        localStorage.setItem("jwt", res.token);
         setIsLogged(true);
         history.push("/home");
       }
@@ -29,34 +29,34 @@ return (
   <>
   <div className="login">
     <p className="login__welcome">Start sesion</p>
-  <form className="login_info" onSubmit={handleSubmit}>
+  <form className="login_form" onSubmit={handleSubmit}>
     <label htmlFor="email">email address</label>
    <input
    required
    name= "email"
    type= "email" 
-   className="login__input"
+   className="login__data"
    value={email}
    onChange={(e) => setEmail(e.target.value)}
     />
     <span className="login__divider"></span>
-    <label htmlFor="password"></label>
+    <label htmlFor="password">Password</label>
    <input 
    required
    name="password"
    type= "password" 
-   className="login__input"
+   className="login__data"
    value= {password} 
    onChange={(e) => setPassword(e.target.value)} />
    <span className="login__divider"></span>
    <div className="login__button">
    
-   <button type="submit" className="login__link">Iniciar sesion</button>
+   <button type="submit" className="login__path">Start sesion</button>
    </div>
   </form>
   <div className="login__signup">
     <p>Are you a member?</p>
-    <Link to= "register" className="login__signup">
+    <Link to= "register" className="login__signup-path">
     Register here
     </Link>
 

@@ -39,7 +39,7 @@ export default function Register() {
     <>
       <div className="register">
         <p className="register__welcome">Regístrate</p>
-        <form className="register__form" onSubmit={handleSubmit}>
+        <form className="register_form" onSubmit={handleSubmit}>
           <label htmlFor="email">Email address</label>
           <input
             required

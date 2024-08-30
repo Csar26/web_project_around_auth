@@ -1,36 +1,72 @@
-.login{
-width: 1280px;
-height: 720px;
-top: 2284px;
-gap: 0px;
-opacity: 0px;
-background: #000000;
-
-
+.login{ 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 30%;
+  font-family: Inter;
+  width: 358px;
+  color: white;
+  display: flex;
 }
 
-.login__start{
-width: 111px;
-height: 44px;
-top: 51px;
-gap: 0px;
-opacity: 0px;
-
+.login__welcome{
+  margin-bottom: 50px;
+  margin-top: 60px;
+  font-size: 29px;
+  font-weight: 900;
+  text-align: center;
 }
 
-.login_form {
-width: 358px;
-height: 29px;
-top: 179px;
-left: 461px;
-gap: 0px;
-opacity: 0px;
-font-family: Inter;
-font-size: 24px;
-font-weight: 900;
-text-align: center;
-background: #FFFFFF;
+.login_form{
+  line-height: 1.5;
+  font-size: 14px;
+  font-weight: 400;
+}
 
+.login__data{
+  color: white;
+  background-color: black;
+  border: none;
+  width: 358px;
+  display: flex;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
 
+.login__divider{
+  margin-bottom: 30px;
+  border: 1px solid white;
+  display: block;
+  
+}
 
+.login__path{
+  border-radius: 2%;
+  cursor: pointer;
+  margin-top: 216px;
+  font-size: 22px;
+  width: 358px;
+  height: 50px;
+  border: none;
+  
+}
+
+.login__signup{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  color: white;
+  font-size: 17px;
+  
+}
+
+.login__signup-path {
+  margin-left: 10px;
+  text-decoration-line: none;
+  color: white;
+  
 }
