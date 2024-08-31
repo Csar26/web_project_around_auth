@@ -19,15 +19,6 @@ export default function Header({
     <header className="header">
       <div className="place-logo">
         <img src={Logo} alt="logo Around" className="logo" />
-        <div className='header__register'>
-    <Link to="login" className='header__login'>
-    login
-    </Link>
-    <Link to="register" className="header__register">
-      Register
-    </Link>
-
-      </div>
       </div>
       
       <section className="profile">

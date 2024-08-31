@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Logo from '../images/Vector.svg'
 import { Link, useHistory } from "react-router-dom";
 import * as auth from "../utils/auth.js";
 import InfoToolTips from "./InfoTooltip.js";
@@ -38,7 +39,18 @@ export default function Register() {
   return (
     <>
       <div className="register">
-        <p className="register__welcome">Regístrate</p>
+        <div className="register__place-logo">
+       <div className="place-logo">
+        <img src={Logo} alt="logo Around" className="logo" />
+        <div className='register__header'>
+       <Link to="login" className='register__header'>
+        Sign in
+        </Link>
+
+       </div>
+       </div>
+       </div>
+        <p className="register__welcome">Join now</p>
         <form className="register_form" onSubmit={handleSubmit}>
           <label htmlFor="email">Email address</label>
           <input
@@ -64,14 +76,14 @@ export default function Register() {
           <span className="register__divider"></span>
           <div className="register__button">
             <button type="submit" className="register__path">
-              Regístrate
+              Sign up
             </button>
           </div>
         </form>
         <div className="register__signin">
           <p>Are you a member?</p>
           <Link to="login" className="register__login-path">
-            Login here
+            Sign in here
           </Link>
         </div>
       </div>

@@ -1,4 +1,5 @@
 .register{
+  display: flex;
   font-family: Inter;
   width: 358px;
   color: white;
@@ -7,9 +8,21 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  left: 30%;
+  padding-left: 700px;
   
   
+}
+
+.register__place-logo{
+  display: flex;
+  justify-content: space-between ;
+}
+
+.register__header{
+  color: #FFF;
+  border: none;
+  
+
 }
 
 .register__welcome{

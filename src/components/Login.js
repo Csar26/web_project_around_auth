@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from '../images/Vector.svg'
 import { Link, useHistory } from "react-router-dom";
 import * as auth from "../utils/auth"
 import { useState } from "react";
@@ -28,9 +29,18 @@ export default function Login ({setIsLogged, email, setEmail}) {
 return (
   <>
   <div className="login">
-    <p className="login__welcome">Start sesion</p>
+  <div className="place-logo">
+        <img src={Logo} alt="logo Around" className="logo" />
+        <div className='login__header'>
+    <Link to="register" className="login__header">
+      Join now
+    </Link>
+
+      </div>
+      </div>
+    <p className="login__welcome">Sign in</p>
   <form className="login_form" onSubmit={handleSubmit}>
-    <label htmlFor="email">email address</label>
+    <label htmlFor="email">Email address</label>
    <input
    required
    name= "email"
@@ -51,13 +61,13 @@ return (
    <span className="login__divider"></span>
    <div className="login__button">
    
-   <button type="submit" className="login__path">Start sesion</button>
+   <button type="submit" className="login__path">Sign in</button>
    </div>
   </form>
   <div className="login__signup">
-    <p>Are you a member?</p>
+    <p>Aren't you a member yet?</p>
     <Link to= "register" className="login__signup-path">
-    Register here
+    Join now
     </Link>
 
   </div>
