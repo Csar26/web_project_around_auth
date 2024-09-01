@@ -13,6 +13,19 @@
   
 }
 
+.register__header{
+  color: #FFF;
+  position: relative;
+  width: 700px;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+ line-height: 22px;
+ text-align: right;
+height: 22px;
+text-decoration: none;
+}
+
 .register__place-logo{
   display: flex;
   justify-content: space-between ;

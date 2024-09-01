@@ -12,7 +12,17 @@
 
 .login__header{
   color: #FFF;
-  border: none;
+  position: relative;
+  width: 700px;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+ line-height: 22px;
+ text-align: right;
+height: 22px;
+text-decoration: none;
+
+
 
 }
 

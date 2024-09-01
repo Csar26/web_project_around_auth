@@ -6,6 +6,17 @@
   padding-top: 45px;
 }
 
+.place-logo_login{
+  display:flex;
+  padding-top: 45px;
+}
+
+.place-logo_register{
+  display:flex;
+  padding-top: 45px;
+   
+}
+
 .avatar:hover{
   opacity: 0.3;
   cursor: pointer;

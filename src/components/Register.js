@@ -40,7 +40,7 @@ export default function Register() {
     <>
       <div className="register">
         <div className="register__place-logo">
-       <div className="place-logo">
+       <div className="place-logo_register">
         <img src={Logo} alt="logo Around" className="logo" />
         <div className='register__header'>
        <Link to="login" className='register__header'>
@@ -52,9 +52,10 @@ export default function Register() {
        </div>
         <p className="register__welcome">Join now</p>
         <form className="register_form" onSubmit={handleSubmit}>
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email"></label>
           <input
             required
+            placeholder="Email address"
             name="email"
             type="email"
             className="register__data"
@@ -62,9 +63,10 @@ export default function Register() {
             onChange={(e) => setEmail(e.target.value)}
           ></input>
           <span className="register__divider"></span>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password"></label>
           <input
             required
+            placeholder="Password"
             name="password"
             type="password"
             minLength="8"

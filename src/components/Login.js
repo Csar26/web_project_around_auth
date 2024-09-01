@@ -29,20 +29,20 @@ export default function Login ({setIsLogged, email, setEmail}) {
 return (
   <>
   <div className="login">
-  <div className="place-logo">
+  <div className="place-logo_login">
         <img src={Logo} alt="logo Around" className="logo" />
         <div className='login__header'>
     <Link to="register" className="login__header">
       Join now
     </Link>
-
       </div>
       </div>
     <p className="login__welcome">Sign in</p>
   <form className="login_form" onSubmit={handleSubmit}>
-    <label htmlFor="email">Email address</label>
+    <label htmlFor="email"></label>
    <input
    required
+   placeholder="Email address"
    name= "email"
    type= "email" 
    className="login__data"
@@ -50,9 +50,10 @@ return (
    onChange={(e) => setEmail(e.target.value)}
     />
     <span className="login__divider"></span>
-    <label htmlFor="password">Password</label>
+    <label htmlFor="password"></label>
    <input 
    required
+   placeholder="Password"
    name="password"
    type= "password" 
    className="login__data"
