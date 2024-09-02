@@ -93,9 +93,10 @@ export default function Register() {
         open={open}
         isFullFill={isFullFill}
         handleClose={() => {
-          setOpen(false);
+        setOpen(false);
         }}
       />
     </>
   );
 }
+

@@ -12,8 +12,9 @@ import AddPlacePopup  from "./AddPlacePopup";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import Login from "./Login";
 import Register from "./Register";
-import {Route, Switch, Link} from 'react-router-dom';
+import {Route, Switch, useHistory, Redirect, Link } from 'react-router-dom';
 import ProtectedRoute from "./ProtectedRoute";
+import * as auth from "../utils/auth"
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState(false);
   const [cards, setCards] = React.useState([]);
   const [selectCard, setSelectCard] = React.useState({});
+  
 
 const [email, setEmail] = React.useState("");
 const [isLogged, setIsLogged] = React.useState(false);
@@ -104,10 +106,8 @@ const [isLogged, setIsLogged] = React.useState(false);
       closeAllPopups();
     }
   }
- 
 
-
-   const handleLogin = (event) => {
+  /*const handleLogin = (event) => {
     const email = event.target.elemets.email.value;
     const password = event.target.elemets.password.value;
     fetch('https://tripleten.desarrollointerno-com/signin', {
@@ -120,8 +120,52 @@ const [isLogged, setIsLogged] = React.useState(false);
     .then(data => {
       console.log(data);
     })
-   }
+   }*/
+ 
+  const history = useHistory();
 
+React.useEffect(() => {
+  if(isLogged){
+    api.getUserInfo().then((user) => {
+      setCurrentUser(user);
+      api.getCards().then((cards)=> {
+        setCards(cards);
+      });
+    });
+  }
+},[isLogged]);
+
+
+React.useEffect(()=> {
+  tokenTest();
+}, []);
+
+   
+
+   
+   const tokenTest = () => {
+    const jwt = localStorage.getItem("jwt");
+
+    if (jwt) {
+      auth
+        .testToken(jwt)
+        .then((res) => {
+          if (res) {
+            setIsLogged(true);
+            history.push("/home");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+
+    return;
+  };
+
+
+const handleLogin = (evt) => {
+  evt.preventDefault();
+  tokenTest();
+};
 
 
   return (
@@ -132,8 +176,8 @@ const [isLogged, setIsLogged] = React.useState(false);
         <Route path="/register">
         <Register />
         </Route>
-        <Route path="/Login" handleLogin={handleLogin}>
-        <Login setIsLogged={setIsLogged} email={email} setEmail={setEmail}>
+        <Route path="/Login" handleLogin={handleLogin} >
+        <Login setIsLogged={setIsLogged}  email={email} setEmail={setEmail}>
         </Login>
         </Route>
         <ProtectedRoute>
@@ -186,6 +230,9 @@ const [isLogged, setIsLogged] = React.useState(false);
         <></>
       </ImagePopup>
       </ProtectedRoute>
+      <Route exact path="/">
+            {isLogged ? <Redirect to="/home" /> : <Redirect to="/register" />}
+          </Route>
      
       </Switch>
     </div>
