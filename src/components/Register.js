@@ -13,6 +13,9 @@ export default function Register() {
 
   const history = useHistory();
 
+  
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if ((email, password)) {

@@ -107,20 +107,6 @@ const [isLogged, setIsLogged] = React.useState(false);
     }
   }
 
-  /*const handleLogin = (event) => {
-    const email = event.target.elemets.email.value;
-    const password = event.target.elemets.password.value;
-    fetch('https://tripleten.desarrollointerno-com/signin', {
-      method: 'POST',
-      headers:{
-        'Content-Type': 'application/json'
-      },
-      body:JSON.stringify({email,password})
-    }).then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
-   }*/
  
   const history = useHistory();
 
@@ -180,7 +166,7 @@ const handleLogin = (evt) => {
         <Login setIsLogged={setIsLogged}  email={email} setEmail={setEmail}>
         </Login>
         </Route>
-        <ProtectedRoute>
+        <ProtectedRoute /*logged={isLogged}*/>
       <Header
         handleEditProfileClick={() => {
           setOpenProfileOpen(true);

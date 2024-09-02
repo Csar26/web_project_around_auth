@@ -2,16 +2,16 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 
-export default function InfoToolTips({handleClose, isOpen, IsFullFill}) {
+export default function InfoToolTips({handleClose, open, isFullFill}) {
 
   return(
     <>
-    <PopupWithForm handleClose={handleClose} isOpen={isOpen} IsFullFill={IsFullFill}>
+    <PopupWithForm handleClose={handleClose} open={open} isFullFill={isFullFill}>
       <div className={
-        IsFullFill ? "popup__register_utter" : "popup__register_error" }
+        isFullFill ? "popup__register_utter" : "popup__register_error" }
       >
       
-      {IsFullFill
+      {isFullFill
 ? "Correct, You are already registered. " : "Ups!, something went wrong."    
       }  
 </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-function ProtectedRoute({ children, loggedIn, ...props }) {
+function ProtectedRoute({ children, logged, ...props }) {
   return (
     <Route {...props}>
-      {loggedIn ? children : <Redirect to={"/login"} />}
+      {logged ? children : <Redirect to={"/login"} />}
     </Route>
   );
 }
