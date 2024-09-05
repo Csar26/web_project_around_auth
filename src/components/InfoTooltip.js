@@ -6,7 +6,7 @@ export default function InfoToolTips({handleClose, open, isFullFill}) {
 
   return(
     <>
-    <PopupWithForm handleClose={handleClose} open={open} isFullFill={isFullFill}>
+    <PopupWithForm onClose={handleClose} open={open} isFullFill={isFullFill} hideSubmitButton={true}>
       <div className={
         isFullFill ? "popup__register_utter" : "popup__register_error" }
       >

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from '../images/Vector.svg'
+import Logo from "../images/Vector.svg";
 import { Link, useHistory } from "react-router-dom";
 import * as auth from "../utils/auth.js";
 import InfoToolTips from "./InfoTooltip.js";
@@ -13,15 +13,12 @@ export default function Register() {
 
   const history = useHistory();
 
-  
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if ((email, password)) {
       auth
         .register(email, password)
-        .then((res) => {
+        .then((res) => {          
           console.log(res, res._id);
           if (!res._id) {
             setIsFullFill(false);
@@ -43,16 +40,15 @@ export default function Register() {
     <>
       <div className="register">
         <div className="register__place-logo">
-       <div className="place-logo_register">
-        <img src={Logo} alt="logo Around" className="logo" />
-        <div className='register__header'>
-       <Link to="login" className='register__header'>
-        Sign in
-        </Link>
-
-       </div>
-       </div>
-       </div>
+          <div className="place-logo_register">
+            <img src={Logo} alt="logo Around" className="logo" />
+            <div className="register__header">
+              <Link to="login" className="register__header">
+                Sign in
+              </Link>
+            </div>
+          </div>
+        </div>
         <p className="register__welcome">Join now</p>
         <form className="register_form" onSubmit={handleSubmit}>
           <label htmlFor="email"></label>
@@ -96,10 +92,9 @@ export default function Register() {
         open={open}
         isFullFill={isFullFill}
         handleClose={() => {
-        setOpen(false);
+          setOpen(false);
         }}
       />
     </>
   );
 }
-

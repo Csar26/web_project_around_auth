@@ -4,18 +4,17 @@ import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import Card from "./Card";
 import React from "react";
-import  api  from "../utils/api";
+import api from "../utils/api";
 import ImagePopup from "./ImagePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
-import AddPlacePopup  from "./AddPlacePopup";
+import AddPlacePopup from "./AddPlacePopup";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import Login from "./Login";
 import Register from "./Register";
-import {Route, Switch, useHistory, Redirect, Link } from 'react-router-dom';
+import { Route, Switch, useHistory, Redirect, Link } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import * as auth from "../utils/auth"
-
+import * as auth from "../utils/auth";
 
 function App() {
   const [openProfileOpen, setOpenProfileOpen] = React.useState(false);
@@ -26,10 +25,9 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState(false);
   const [cards, setCards] = React.useState([]);
   const [selectCard, setSelectCard] = React.useState({});
-  
 
-const [email, setEmail] = React.useState("");
-const [isLogged, setIsLogged] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+  const [isLogged, setIsLogged] = React.useState(false);
 
   const closeAllPopups = () => {
     setOpenProfileOpen(false);
@@ -37,9 +35,6 @@ const [isLogged, setIsLogged] = React.useState(false);
     setOpenAvatarOpen(false);
     setOpenImageOpen(false);
     setOpenConfirmationOpen(false);
-
-
-    
   };
   React.useEffect(() => {
     api.getUserInfo().then((user) => {
@@ -76,60 +71,55 @@ const [isLogged, setIsLogged] = React.useState(false);
   function remoteDeleteCard() {
     return api.deleteCard(selectCard._id).then(() => {
       api.getCards().then((cards) => {
-        setCards(cards);        
-      });
-    });
-  }
-  const onSubmitEditProfile = ({name, about}) => {
-    return api.updateUser(name, about).then((user)=> {
-      setCurrentUser(user);
-      setOpenProfileOpen(false);
-    })
-  }
-  const onSubmitAddPlace = (data) => {
-    return api.addCard(data.link, data.title).then((card) => {
-    setCards([card,...cards]);
-    setOpenAddCardOpen(false);
-    });
-  };
-  const onSubmitAvatar = (avatar) => {
-    return api.changeAvatar(avatar).then((user) => {
-    setCurrentUser(user);
-    setOpenAvatarOpen(false);
-    });
-  };
-  const handleCloseEscape = () => {
-    document.addEventListener("keydown", handleKeyEscape)
-  }
-  const handleKeyEscape = (evt) => {
-    if (evt.key ==="Escape"){
-      closeAllPopups();
-    }
-  }
-
- 
-  const history = useHistory();
-
-React.useEffect(() => {
-  if(isLogged){
-    api.getUserInfo().then((user) => {
-      setCurrentUser(user);
-      api.getCards().then((cards)=> {
         setCards(cards);
       });
     });
   }
-},[isLogged]);
+  const onSubmitEditProfile = ({ name, about }) => {
+    return api.updateUser(name, about).then((user) => {
+      setCurrentUser(user);
+      setOpenProfileOpen(false);
+    });
+  };
+  const onSubmitAddPlace = (data) => {
+    return api.addCard(data.link, data.title).then((card) => {
+      setCards([card, ...cards]);
+      setOpenAddCardOpen(false);
+    });
+  };
+  const onSubmitAvatar = (avatar) => {
+    return api.changeAvatar(avatar).then((user) => {
+      setCurrentUser(user);
+      setOpenAvatarOpen(false);
+    });
+  };
+  const handleCloseEscape = () => {
+    document.addEventListener("keydown", handleKeyEscape);
+  };
+  const handleKeyEscape = (evt) => {
+    if (evt.key === "Escape") {
+      closeAllPopups();
+    }
+  };
 
+  const history = useHistory();
 
-React.useEffect(()=> {
-  tokenTest();
-}, []);
+  React.useEffect(() => {
+    if (isLogged) {
+      api.getUserInfo().then((user) => {
+        setCurrentUser(user);
+        api.getCards().then((cards) => {
+          setCards(cards);
+        });
+      });
+    }
+  }, [isLogged]);
 
-   
+  React.useEffect(() => {
+    tokenTest();
+  }, []);
 
-   
-   const tokenTest = () => {
+  const tokenTest = () => {
     const jwt = localStorage.getItem("jwt");
 
     if (jwt) {
@@ -147,83 +137,89 @@ React.useEffect(()=> {
     return;
   };
 
-
-const handleLogin = (evt) => {
-  evt.preventDefault();
-  tokenTest();
-};
-
+  const handleLogin = (evt) => {
+    evt.preventDefault();
+    tokenTest();
+  };
 
   return (
-
     <CurrentUserContext.Provider value={currentUser}>
-    <div className="page" >
-      <Switch>
-        <Route path="/register">
-        <Register />
-        </Route>
-        <Route path="/Login" handleLogin={handleLogin} >
-        <Login setIsLogged={setIsLogged}  email={email} setEmail={setEmail}>
-        </Login>
-        </Route>
-        <ProtectedRoute /*logged={isLogged}*/>
-      <Header
-        handleEditProfileClick={() => {
-          setOpenProfileOpen(true);
-          handleCloseEscape();
-        }}
-        handleAddPlaceClick={() => {
-          setOpenAddCardOpen(true);
-          handleCloseEscape();
-        }}
-        handleEditAvatarClick={() => {
-          setOpenAvatarOpen(true);
-          handleCloseEscape();
-        }}
-      />
-      <Main        
-        cards={cards}
-        handleLike={handleLike}
-        handleRemoveLike={handleRemoveLike}
-        handleDeleteCard={handleDeleteCard}
-        handleCardClick={handleCardClick}
-      />
-      <Footer />
+      <div className="page">
+        <Switch>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/Login" handleLogin={handleLogin}>
+            <Login
+              setIsLogged={setIsLogged}
+              email={email}
+              setEmail={setEmail}
+            ></Login>
+          </Route>
+          <ProtectedRoute logged={isLogged}>
+            <>
+              <Header
+                handleEditProfileClick={() => {
+                  setOpenProfileOpen(true);
+                  handleCloseEscape();
+                }}
+                handleAddPlaceClick={() => {
+                  setOpenAddCardOpen(true);
+                  handleCloseEscape();
+                }}
+                handleEditAvatarClick={() => {
+                  setOpenAvatarOpen(true);
+                  handleCloseEscape();
+                }}
+              />
+              <Main
+                cards={cards}
+                handleLike={handleLike}
+                handleRemoveLike={handleRemoveLike}
+                handleDeleteCard={handleDeleteCard}
+                handleCardClick={handleCardClick}
+              />
+              <Footer />
 
-      <EditProfilePopup isOpen={openProfileOpen} onClose={closeAllPopups} onUpdateUser={onSubmitEditProfile}/>  
+              <EditProfilePopup
+                isOpen={openProfileOpen}
+                onClose={closeAllPopups}
+                onUpdateUser={onSubmitEditProfile}
+              />
 
-      <AddPlacePopup isOpen={openAddCardOpen} onClose={closeAllPopups} onSubmitAddPlace={onSubmitAddPlace} />    
+              <AddPlacePopup
+                isOpen={openAddCardOpen}
+                onClose={closeAllPopups}
+                onSubmitAddPlace={onSubmitAddPlace}
+              />
 
+              <EditAvatarPopup
+                isOpen={openAvatarOpen}
+                onClose={closeAllPopups}
+                onUpdateAvatar={onSubmitAvatar}
+              />
 
-
-      <EditAvatarPopup isOpen={openAvatarOpen} onClose={closeAllPopups} onUpdateAvatar={onSubmitAvatar} />
-
-      <PopupWithForm
-        open={openConfirmationOpen}
-        onSubmit={remoteDeleteCard}
-        onClose={closeAllPopups}
-        title={"Are you sure?"}
-        buttonText="Yes"
-      >
-        <></>
-      </PopupWithForm>
-      <ImagePopup
-        open={openImageOpen}
-        onClose={closeAllPopups}
-        title={"Image"}
-        selectCard={selectCard}
-      >
-        <></>
-      </ImagePopup>
-      </ProtectedRoute>
-      <Route exact path="/">
+              <PopupWithForm
+                open={openConfirmationOpen}
+                onSubmit={remoteDeleteCard}
+                onClose={closeAllPopups}
+                title={"Are you sure?"}
+                buttonText="Yes"
+              ></PopupWithForm>
+              <ImagePopup
+                open={openImageOpen}
+                onClose={closeAllPopups}
+                title={"Image"}
+                selectCard={selectCard}
+              ></ImagePopup>
+            </>
+          </ProtectedRoute>
+          <Route exact path="/">
             {isLogged ? <Redirect to="/home" /> : <Redirect to="/register" />}
           </Route>
-     
-      </Switch>
-    </div>
+        </Switch>
+      </div>
     </CurrentUserContext.Provider>
-    
   );
 }
 export default App;
