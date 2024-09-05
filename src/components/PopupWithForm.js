@@ -1,6 +1,6 @@
 import Popup from "./Popup";
 
-export default function PopupWithForm ({children, open, title, onClose, onSubmit, buttonText = 'Save'}){
+export default function PopupWithForm ({children, open, title, onClose, onSubmit, buttonText = 'Save', hideSubmiButton = false}){
 
   const handleSubmit = (event) => {
     event.preventDefault();

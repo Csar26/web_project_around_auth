@@ -107,6 +107,13 @@ const [isLogged, setIsLogged] = React.useState(false);
     }
   }
 
+  const LogoutButton = () => {
+    localStorage.removeItem("jwt");
+    setCurrentUser({});
+    setIsLogged(false);
+    history.push("/login");
+  };
+
  
   const history = useHistory();
 
@@ -166,7 +173,8 @@ const handleLogin = (evt) => {
         <Login setIsLogged={setIsLogged}  email={email} setEmail={setEmail}>
         </Login>
         </Route>
-        <ProtectedRoute /*logged={isLogged}*/>
+        <ProtectedRoute logged={isLogged}>
+          <>
       <Header
         handleEditProfileClick={() => {
           setOpenProfileOpen(true);
@@ -180,6 +188,7 @@ const handleLogin = (evt) => {
           setOpenAvatarOpen(true);
           handleCloseEscape();
         }}
+        LogoutButton={LogoutButton}
       />
       <Main        
         cards={cards}
@@ -212,9 +221,9 @@ const handleLogin = (evt) => {
         onClose={closeAllPopups}
         title={"Image"}
         selectCard={selectCard}
-      >
-        <></>
+      >   
       </ImagePopup>
+      </>
       </ProtectedRoute>
       <Route exact path="/">
             {isLogged ? <Redirect to="/home" /> : <Redirect to="/register" />}
