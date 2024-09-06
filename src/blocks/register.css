@@ -1,15 +1,11 @@
 .register{
-  display: flex;
-  font-family: Inter;
-  width: 358px;
-  color: white;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-left: 700px;
-  
+  font-family: Inter;
+  color: white;
+  display: flex;
   
 }
 

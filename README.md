@@ -1,6 +1,6 @@
 # Tripleten web_project_around_auth
 Título: 
-Proyecto Web con Express: World Around Auth
+Proyecto Web React: World Around Auth
 
 Autor:
 César Vivas

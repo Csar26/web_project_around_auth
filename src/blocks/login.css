@@ -4,10 +4,9 @@
   align-items: center;
   position: relative;
   font-family: Inter;
-  width: 358px;
   color: white;
   display: flex;
-  left: 700px;
+
 }
 
 .login__header{
