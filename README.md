@@ -1,29 +1,51 @@
-# Tripleten web_project_around_auth
-Título: 
-Proyecto Web React: World Around Auth
+🌍 World Around Auth – React Web Project
+🚀 Project Overview
+World Around Auth is a React-based web application with a robust authentication system. It integrates with a backend API to manage user registration, login, and data retrieval, following best practices for security and user experience.
 
-Autor:
+🔑 Features
+User Registration & Login
+Protected Routes to restrict access to authenticated users
+Token-Based Authentication for secure session management
+Local Storage for Tokens to maintain login state
+Custom Components for login, registration, and user data display
+Backend API Integration to handle authentication requests
+🛠️ Technologies Used
+React – Component-based frontend development
+JavaScript – Core scripting language
+CSS – Styling and layout
+📌 Setup Instructions
+Clone the repository
+bash
+Copy
+Edit
+git clone https://github.com/your-username/web_project_around_auth.git
+Navigate to the project directory
+bash
+Copy
+Edit
+cd web_project_around_auth
+Install dependencies
+bash
+Copy
+Edit
+npm install
+Start the development server
+bash
+Copy
+Edit
+npm start
+📂 Project Structure
+java
+Copy
+Edit
+/web_project_around_auth
+│── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│── public/
+│── package.json
+│── README.md
+👨‍💻 Author
 César Vivas
 
-Descripción general:
-Este proyecto implica crear una aplicación React con un sistema de autenticación robusto. Se integrará con una API de backend proporcionada para manejar el registro de usuarios, el inicio de sesión y la recuperación de datos. La aplicación seguirá las mejores prácticas para la seguridad y la experiencia del usuario.
-
-Características:
-
-Registro e inicio de sesión de usuarios
-Rutas protegidas
-Autenticación basada en tokens
-Almacenamiento local para tokens
-Componentes personalizados para inicio de sesión, registro y visualización de información
-Integración con una API de backend
-Tecnologías:
-
-React
-JavaScript
-CSS
-
-Configuración:
-
-Clone el repositorio.
-Instale las dependencias: npm install
-Inicie el servidor de desarrollo: npm start
